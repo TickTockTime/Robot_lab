@@ -27,7 +27,7 @@ def plot_arrow(x, y, yaw, length=0.5, width=0.1):
     plt.plot(x, y)
 
 
-def draw_trajectory(trajectory, x, goal, ob, path, is_dynamic):
+def draw_trajectory(trajectory, x, goal, ob, is_dynamic, path = None):
     """
     :param trajectory: trajectory
     :param x: current or start position
@@ -47,10 +47,24 @@ def draw_trajectory(trajectory, x, goal, ob, path, is_dynamic):
     plt.plot(ob[:, 0], ob[:, 1], "bs")
     plot_arrow(x[0], x[1], x[2])
     plt.axis("equal")
-    plt.plot([path_point[0] for path_point in path], [path_point[1] for path_point in path], '-b')
+    if path is not None:
+        plt.plot([path_point[0] for path_point in path], [path_point[1] for path_point in path], '-b')
     plt.grid(True)
     if is_dynamic:
-        plt.pause(0.0001)
+        plt.pause(0.000001)
     else:
         plt.show()
 
+
+def draw_path(path, x, goal, ob):
+
+    plt.cla()
+    plt.plot(x[0], x[1], "xr")
+    plt.plot(0, 0, "og")
+    plt.plot(goal[0], goal[1], "or")
+    for (obstacle_x, obstacle_y, size) in ob:
+        plt.plot(obstacle_x, obstacle_y, "sk", ms=10*size)
+    plt.axis("equal")
+    plt.plot([path_point[0] for path_point in path], [path_point[1] for path_point in path], '-b')
+    plt.grid(True)
+    plt.show()

@@ -22,11 +22,12 @@ class DWA(object):
         self.max_w = 30.0*math.pi/180.0         #   [rad/s]
         self.max_v_a = 0.2                      #   [m/(s^2)]
         self.max_w_a = 30.0*math.pi/180.0       #   [rad/(s^2)]
+        self.max_v_orientaion = 30.0*math.pi/180.0
 
         # resolution ratio of the v & w
-        self.v_resolution = 0.01                #   [m/s]
-        self.w_resolution = 0.1*math.pi/180.0   #   [rad/s]
-
+        self.v_resolution = 0.02                #   [m/s]
+        self.w_resolution = math.pi/180.0   #   [rad/s]
+        self.orientation_resolution = math.pi/180.0
         # sample time & predict time
         self.sample_time = 0.1                  #   [s]
         self.prediect_time = 3.0                #   [s]
@@ -42,16 +43,17 @@ class DWA(object):
     def motion(self, x, u):
 
         """
-        :param x: current position
+        :param x: current position ([x, y, orientation, [v, w, v_orientation]])
         :param u: control command [v, w]
         :return: position after motion
         """
 
-        x[0] += u[0]*math.cos(x[2])*self.sample_time
-        x[1] += u[0]*math.sin(x[2])*self.sample_time
+        x[0] += u[0]*math.cos(x[2]+u[2])*self.sample_time
+        x[1] += u[0]*math.sin(x[2]+u[2])*self.sample_time
         x[2] += u[1]*self.sample_time
         x[3] = u[0]
         x[4] = u[1]
+        x[5] = u[2]
 
         return x
 
@@ -65,6 +67,7 @@ class DWA(object):
 
         vr = self.calc_dynamic_window(x)
         u, trajectory = self.generate_best_trajectory(vr, x, u)
+
         return u, trajectory
 
     def calc_dynamic_window(self, x):
@@ -82,16 +85,19 @@ class DWA(object):
               x[4] + self.max_w_a * self.sample_time]
 
         vr = [max(vs[0], vd[0]), min(vs[1], vd[1]),
-              max(vs[2], vd[2]), min(vs[3], vd[3])]
+              max(vs[2], vd[2]), min(vs[3], vd[3]),
+              -self.max_v_orientaion, self.max_v_orientaion]
 
+        # print(vr)
         return vr
 
-    def get_trajectory(self, x_init, v, w):
+    def get_trajectory(self, x_init, v, w, orientation):
 
         """
         :param x_init: current position
         :param v: velocity control command
         :param w: angular velocity control command
+        :param orientation: velocity orientation
         :return: trajectory in prediction time
         """
 
@@ -99,7 +105,7 @@ class DWA(object):
         trajectory = np.array(x)
         time = 0
         while time <= self.prediect_time:
-            x = self.motion(x, [v, w])
+            x = self.motion(x, [v, w, orientation])
             trajectory = np.vstack((trajectory, x))
             time += self.sample_time
 
@@ -154,25 +160,26 @@ class DWA(object):
         """
 
         x_init = x[:]
+
         final_cost = 10000.0
         final_u = u
         best_trajectory = np.array([x])
 
         for v in np.arange(vr[0], vr[1], self.v_resolution):
             for w in np.arange(vr[2], vr[3], self.w_resolution):
-                temp_trajectory = self.get_trajectory(x_init, v, w)
+                for orientation in np.arange(vr[4], vr[5], self.orientation_resolution):
+                    temp_trajectory = self.get_trajectory(x_init, v, w, orientation)
 
-                goal_cost = self.calc_goal_cost(temp_trajectory)
-                vel_cost = self.velocity_cost*(self.max_v-temp_trajectory[-1, 3])
-                obstacle_cost = self.calc_obstacle_cost(temp_trajectory)
+                    goal_cost = self.calc_goal_cost(temp_trajectory)
+                    vel_cost = self.velocity_cost*(self.max_v-temp_trajectory[-1, 3])
+                    obstacle_cost = self.calc_obstacle_cost(temp_trajectory)
 
-                temp_cost = goal_cost + vel_cost + obstacle_cost
+                    temp_cost = goal_cost + vel_cost + obstacle_cost
 
-                if final_cost >= temp_cost:
-                    final_cost = temp_cost
-                    final_u = [v, w]
-                    best_trajectory = temp_trajectory
-
+                    if final_cost >= temp_cost:
+                        final_cost = temp_cost
+                        final_u = [v, w, orientation]
+                        best_trajectory = temp_trajectory
         return final_u, best_trajectory
 
 
@@ -183,19 +190,18 @@ def dynamic_windwo_approach(x, u, goal, ob, path):
         u, best_trajectory = dwa.control(x, u)
         print(best_trajectory)
         x = dwa.motion(x, u)
-        # dwa.x = x
         trajectory = np.vstack((trajectory, x))
-        draw.draw_trajectory(best_trajectory, x, goal, ob, path, is_dynamic=True)
+        draw.draw_trajectory(best_trajectory, x, goal, ob, is_dynamic=True, path=path)
         if math.sqrt((x[0]-goal[0])**2 + (x[1]-goal[1])**2) <= dwa.robot_radius:
             print("goal")
             break
     return x
 
+
 def main():
-    x = np.array([0.0, 0.0, math.pi/2.0, 0.2, 0.0])
-    u = [0.2, 0.0]
+    x = np.array([0.0, 0.0, math.pi/2.0, 0.2, 0.0, 0.0])
+    u = [0.2, 0.0, 0.0]
     goal = [10, 10]
-    # ob = np.array([[0, 2]])
     ob = np.array([[-1, -1],
                    [0, 2],
                    [4.0, 2.0],
@@ -210,17 +216,16 @@ def main():
     trajectory = np.array(x)
 
     for i in range(1000):
+        print("1")
         u, best_trajectory = dwa.control(x, u)
-        print(best_trajectory)
         x = dwa.motion(x, u)
-        # dwa.x = x
         trajectory = np.vstack((trajectory, x))
         draw.draw_trajectory(best_trajectory, x, goal, ob, is_dynamic=True)
         if math.sqrt((x[0]-goal[0])**2 + (x[1]-goal[1])**2) <= dwa.robot_radius:
             print("goal")
             break
-    # draw.draw_trajectory(trajectory, x, goal, ob, is_dynamic=False)
-    print(x)
+    draw.draw_trajectory(trajectory, x, goal, ob, is_dynamic=False)
+
 
 if __name__ == '__main__':
     main()

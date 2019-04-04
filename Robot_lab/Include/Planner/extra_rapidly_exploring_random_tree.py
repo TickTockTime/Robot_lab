@@ -5,6 +5,7 @@
 # @File  : extra_rapidly_exploring_random_tree.py
 
 import matplotlib.pyplot as plt
+import Include.Draw.draw_function as draw
 import math
 import copy
 import random
@@ -23,7 +24,7 @@ class ERRT_Plan(object):
     """
     ERRT planning
     """
-    def __init__(self, start, goal, obstacle, map_scope):
+    def __init__(self, start, goal, obstacle, map_scope, pre_path = None):
         """
         :param start: start position (ERRT_Node)
         :param goal: goal position  (ERRT_Node)
@@ -35,9 +36,11 @@ class ERRT_Plan(object):
         self.map_scope = map_scope
         self.q = 0.3
         self.p = 0.4
-        self.step_distance = 2
+        self.step_distance = 1
         self.obstacle_list = obstacle
         self.node_list = [self.start]
+        if pre_path is not None:
+            self.pre_path = pre_path
 
     def generate_random_node(self):
         rand_x = random.randint(self.map_scope[0], self.map_scope[1])
@@ -56,6 +59,16 @@ class ERRT_Plan(object):
                 status = True
         return status
 
+    def collision(self, test_node):
+        status = False
+        for ob in self.obstacle_list:
+            dx = test_node[0] - ob[0]
+            dy = test_node[1] - ob[1]
+            d = math.sqrt(dx ** 2 + dy ** 2)
+            if d < ob[2]:
+                status = True
+        return status
+
     @staticmethod
     def get_nearest_node(rand_node, node_list):
         distance_list = []
@@ -65,6 +78,33 @@ class ERRT_Plan(object):
             distance_list.append((dx**2 + dy**2))
         min_index = distance_list.index(min(distance_list))
         return min_index
+
+    def smooth(self, path):
+        i = 0
+        while i < (len(path)-2):
+            collision = False
+            node_1 = path[i]
+            node_3 = path[i+2]
+
+            theta = math.atan2((node_3[1] - node_1[1]), (node_3[0] - node_1[0]))
+            test_node = [node_1[0], node_1[1]]
+            test_dist = math.sqrt((test_node[0] - node_3[0])**2+(test_node[0] - node_3[0])**2)
+            while (test_dist>self.step_distance):
+                if self.collision(test_node):
+                    collision = True
+                    break
+                test_node[0] += self.step_distance * math.cos(theta)
+                test_node[1] += self.step_distance * math.sin(theta)
+                test_dist = math.sqrt((test_node[0] - node_3[0]) ** 2 + (test_node[0] - node_3[0]) ** 2)
+            if collision == True:
+                i+=1
+            else:
+                path.remove(path[i+1])
+        return path
+
+
+
+
 
     def errt_planning(self):
         while True:
@@ -109,6 +149,12 @@ class ERRT_Plan(object):
             path.append([node.x, node.y])
             index = node.parent
         path.append([self.start.x, self.start.y])
+        path = path[::-1]
+        # draw.draw_path(path, x=[0, 0], goal=[10, 20], ob=self.obstacle_list)
+        # print(path)
+        path = self.smooth(path)
+        # draw.draw_path(path, x=[0, 0], goal=[10, 20], ob=self.obstacle_list)
+        # print(result_path)
 
         return path
 
@@ -120,14 +166,13 @@ def main():
     obstacle  =[[5, 1, 1],
                 [3, 6, 2],
                 [3, 8, 2],
-                [1, 1, 2],
+                [5, 1, 2],
                 [3, 5, 2],
                 [9, 5, 2],
                 [3, 0, 3]]
-    errt = ERRT_Plan(start = [0, 0], goal = [100, 210], map_scope = [-450, 450, -600, 600],  obstacle=obstacle)
+    errt = ERRT_Plan(start = [0, 0], goal = [10, 20], map_scope = [-4, 40, -30, 30],  obstacle=obstacle)
     path = errt.errt_planning()
-    print(path[::-1])
-
+    # draw.draw_path(path, x = [0, 0], goal = [10, 20], ob = obstacle)
 if __name__=="__main__":
     main()
 
