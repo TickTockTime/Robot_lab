@@ -150,10 +150,11 @@ class ERRT_Plan(object):
             index = node.parent
         path.append([self.start.x, self.start.y])
         path = path[::-1]
-        # draw.draw_path(path, x=[0, 0], goal=[10, 20], ob=self.obstacle_list)
+        print([self.goal.x, self.start.y])
+        draw.draw_path(path, [self.start.x, self.start.y], [self.goal.x, self.goal.y], ob=self.obstacle_list)
         # print(path)
         path = self.smooth(path)
-        # draw.draw_path(path, x=[0, 0], goal=[10, 20], ob=self.obstacle_list)
+        draw.draw_path(path, [self.start.x, self.start.y], [self.goal.x, self.goal.y], ob=self.obstacle_list)
         # print(result_path)
 
         return path
