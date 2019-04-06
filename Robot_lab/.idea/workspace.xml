@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1eeb1655-888a-4ae5-8926-6f45d4bdfb33" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Include/Draw/draw_function.py" beforeDir="false" afterPath="$PROJECT_DIR$/Include/Draw/draw_function.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Include/Planner/dynamic_window_approach.py" beforeDir="false" afterPath="$PROJECT_DIR$/Include/Planner/dynamic_window_approach.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Include/Planner/extra_rapidly_exploring_random_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/Include/Planner/extra_rapidly_exploring_random_tree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Include/Serial_Communication/command_generate.py" beforeDir="false" afterPath="$PROJECT_DIR$/Include/Serial_Communication/command_generate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Include/Serial_Communication/serial_send.py" beforeDir="false" afterPath="$PROJECT_DIR$/Include/Serial_Communication/serial_send.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,23 +17,23 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test.py">
+        <entry file="file://$PROJECT_DIR$/Include/Serial_Communication/command_generate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="25" column="19" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+            <state relative-caret-position="180">
+              <caret line="38" column="45" lean-forward="true" selection-start-line="38" selection-start-column="45" selection-end-line="38" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Include/Planner/extra_rapidly_exploring_random_tree.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="81" selection-start-line="81" selection-end-line="102" selection-end-column="19" />
+            <state relative-caret-position="202">
+              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
               <folding>
-                <element signature="e#151#182#0" expanded="true" />
+                <element signature="e#118#129#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -39,8 +42,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Include/Planner/dynamic_window_approach.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3542">
-              <caret line="24" column="34" lean-forward="true" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+            <state relative-caret-position="268">
+              <caret line="54" column="35" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="35" />
+              <folding>
+                <element signature="e#138#149#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Include/Sim_Command/SocketControl.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="82">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+              <folding>
+                <element signature="e#1#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Include/Sim_Command/SocketRead.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="42" column="9" lean-forward="true" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -48,8 +78,44 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Include/Draw/draw_function.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="66" column="13" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
+            <state relative-caret-position="159">
+              <caret line="62" column="30" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Include/Sim_Command/SocketDraw.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Include/Planner/extra_rapidly_exploring_random_tree.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="156" column="82" selection-start-line="156" selection-start-column="82" selection-end-line="156" selection-end-column="82" />
+              <folding>
+                <element signature="e#151#182#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Include/Serial_Communication/serial_send.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="142">
+              <caret line="60" column="41" selection-start-line="60" selection-start-column="41" selection-end-line="60" selection-end-column="41" />
+              <folding>
+                <element signature="e#126#139#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -83,33 +149,23 @@
         <option value="$PROJECT_DIR$/Planner/DWA.py" />
         <option value="$PROJECT_DIR$/Include/Draw/test.py" />
         <option value="$PROJECT_DIR$/Include/Planner/DWA.py" />
-        <option value="$PROJECT_DIR$/Include/Planner/dynamic_window_approach.py" />
-        <option value="$PROJECT_DIR$/src/test.py" />
+        <option value="$PROJECT_DIR$/Include/Sim_Command/SocketControl.py" />
+        <option value="$PROJECT_DIR$/Include/Sim_Command/SocketDraw.py" />
+        <option value="$PROJECT_DIR$/Include/Sim_Command/SocketRead.py" />
         <option value="$PROJECT_DIR$/Include/Draw/draw_function.py" />
         <option value="$PROJECT_DIR$/Include/Planner/extra_rapidly_exploring_random_tree.py" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/Robo_lab.iml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/R_User_Library.xml" />
-        <option value="$PROJECT_DIR$/.idea/Robo_lab.iml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/R_User_Library.xml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/src/test.py" />
+        <option value="$PROJECT_DIR$/Include/Planner/dynamic_window_approach.py" />
+        <option value="$PROJECT_DIR$/Include/Serial_Communication/command_generate.py" />
+        <option value="$PROJECT_DIR$/Include/Serial_Communication/serial_send.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="952" />
-    <option name="width" value="977" />
-    <option name="height" value="1088" />
+    <option name="x" value="530" />
+    <option name="y" value="341" />
+    <option name="width" value="1153" />
+    <option name="height" value="649" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -144,6 +200,25 @@
             <path>
               <item name="Robot_lab" type="b2602c69:ProjectViewProjectNode" />
               <item name="Robot_lab" type="462c0819:PsiDirectoryNode" />
+              <item name="Include" type="462c0819:PsiDirectoryNode" />
+              <item name="Serial_Communication" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Robot_lab" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Robot_lab" type="462c0819:PsiDirectoryNode" />
+              <item name="Include" type="462c0819:PsiDirectoryNode" />
+              <item name="Sim_Command" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Robot_lab" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Robot_lab" type="462c0819:PsiDirectoryNode" />
+              <item name="Include" type="462c0819:PsiDirectoryNode" />
+              <item name="Sim_Command" type="462c0819:PsiDirectoryNode" />
+              <item name="Protobuf" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Robot_lab" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Robot_lab" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -160,6 +235,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\WorkSpace\Robot_lab\Robot_lab\Include\Sim_Command" />
+      <recent name="E:\WorkSpace\Robot_lab\Robot_lab\Include" />
       <recent name="E:\WorkSpace\2018-2019-Spring-and-Summer-Semester\Robo_lab\Include" />
       <recent name="E:\WorkSpace\2018-2019-Spring-and-Summer-Semester\Robo_lab\Serial_Communication" />
     </key>
@@ -176,8 +253,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test">
-    <configuration name="dynamic_window_approach" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.serial_send">
+    <configuration name="SocketRead" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Robo_lab" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -185,11 +262,32 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Include/Planner" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Include/Sim_Command" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Include/Planner/dynamic_window_approach.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Include/Sim_Command/SocketRead.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="command_generate" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Robo_lab" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Include/Serial_Communication" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Include/Serial_Communication/command_generate.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -211,6 +309,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Include/Planner/extra_rapidly_exploring_random_tree.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="serial_send" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Robo_lab" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Include/Serial_Communication" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Include/Serial_Communication/serial_send.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -242,9 +361,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.serial_send" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.command_generate" />
+        <item itemvalue="Python.SocketRead" />
         <item itemvalue="Python.extra_rapidly_exploring_random_tree" />
-        <item itemvalue="Python.dynamic_window_approach" />
       </list>
     </recent_temporary>
   </component>
@@ -279,12 +400,12 @@
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17255434" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2384511" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32969433" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.64266306" visible="true" weight="0.2742857" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.64266306" weight="0.41714287" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39857143" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -312,36 +433,86 @@
     <entry file="file://$PROJECT_DIR$/Include/__init__.py" />
     <entry file="file://$PROJECT_DIR$/Include/Serial_Communication/.pytest_cache/README.md" />
     <entry file="file://$PROJECT_DIR$/Include/Draw/test.py" />
-    <entry file="file://$PROJECT_DIR$/Include/Serial_Communication/serial_send.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Include/Draw/draw_function.py">
+    <entry file="file://$PROJECT_DIR$/Include/Sim_Command/SocketDraw.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="66" column="13" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="25" column="19" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Include/Planner/dynamic_window_approach.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3542">
-          <caret line="24" column="34" lean-forward="true" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+        <state relative-caret-position="192">
+          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Include/Planner/extra_rapidly_exploring_random_tree.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="81" selection-start-line="81" selection-end-line="102" selection-end-column="19" />
+        <state relative-caret-position="378">
+          <caret line="156" column="82" selection-start-line="156" selection-start-column="82" selection-end-line="156" selection-end-column="82" />
           <folding>
             <element signature="e#151#182#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Include/Draw/draw_function.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="62" column="30" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Include/Sim_Command/SocketControl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="e#1#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="e#118#129#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Include/Planner/dynamic_window_approach.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="54" column="35" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="35" />
+          <folding>
+            <element signature="e#138#149#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Include/Serial_Communication/command_generate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="38" column="45" lean-forward="true" selection-start-line="38" selection-start-column="45" selection-end-line="38" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Include/Serial_Communication/serial_send.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="60" column="41" selection-start-line="60" selection-start-column="41" selection-end-line="60" selection-end-column="41" />
+          <folding>
+            <element signature="e#126#139#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Include/Sim_Command/SocketRead.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="42" column="9" lean-forward="true" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
