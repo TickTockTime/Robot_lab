@@ -42,7 +42,6 @@ def draw_trajectory(trajectory, x, goal, ob, is_dynamic, path = None):
     else:
         plt.plot(trajectory[:, 0], trajectory[:, 1], "-r")
     plt.plot(x[0], x[1], "xr")
-    plt.plot(0, 0, "og")
     plt.plot(goal[0], goal[1], "or")
     for (obstacle_x, obstacle_y, size) in ob:
         plt.plot(obstacle_x, obstacle_y, "sk", ms=size)
@@ -64,6 +63,7 @@ def draw_path(path, x, goal, ob):
     plt.plot(goal[0], goal[1], "or")
     for (obstacle_x, obstacle_y, size) in ob:
         plt.plot(obstacle_x, obstacle_y, "sk", ms=size)
+    plot_arrow(x[0], x[1], x[2])
     plt.axis("equal")
     plt.plot([path_point[0] for path_point in path], [path_point[1] for path_point in path], '-b')
     plt.grid(True)

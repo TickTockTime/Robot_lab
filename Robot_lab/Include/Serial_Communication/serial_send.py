@@ -29,7 +29,7 @@ class ser_command(object):
         self.port.write(cmd)
         msg = self.port.readall()
         msg = self.msg_to_hex(msg)
-        print(msg)
+        # print(msg)
 
 
     def msg_to_hex(self, string):
@@ -42,12 +42,12 @@ class ser_command(object):
         self.port.write(self.start_cmd1)
         msg = self.port.readall()
         msg = self.msg_to_hex(msg)
-        print(msg)
+        # print(msg)
         # time.sleep(1)
         self.port.write(self.start_cmd2)
         msg = self.port.readall()
         msg = self.msg_to_hex(msg)
-        print(msg)
+        # print(msg)
         # if ( self.receive_msgs() == True ):
         #    self.port.write(self.start_cmd2)
         # msg = self.receive_msgs()
@@ -58,7 +58,7 @@ def test():
               0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
               0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00]
     """
-    go_cmd = cmd.command_raw(1,10,0, -180*math.pi/180)
+    go_cmd = cmd.command_raw(3, 100, -60*math.pi/180, 0)
 
     robo_cmd = ser_command(com = 'COM3', baud = 115200)
     robo_cmd.send_ready_cmd()

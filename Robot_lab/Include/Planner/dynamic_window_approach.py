@@ -20,28 +20,28 @@ class DWA(object):
 
         # scope of the vel, vel_acc, w, w_acc
         self.min_v = 0                        #   [cm/s]
-        self.max_v = 120                        #   [cm/s]
-        self.min_w = -30.0*math.pi/180.0        #   [rad/s]
-        self.max_w = 30.0*math.pi/180.0         #   [rad/s]
-        self.max_v_a = 50                      #   [cm/(s^2)]
-        self.max_w_a = 60.0*math.pi/180.0       #   [rad/(s^2)]
-        self.max_v_orientaion = 60.0*math.pi/180.0
+        self.max_v = 100                        #   [cm/s]
+        self.min_w = -90.0*math.pi/180.0        #   [rad/s]
+        self.max_w = 90.0*math.pi/180.0         #   [rad/s]
+        self.max_v_a = 100                      #   [cm/(s^2)]
+        self.max_w_a = 30*math.pi/180.0       #   [rad/(s^2)]
+        self.max_v_orientaion = 100.0*math.pi/180.0
 
         # resolution ratio of the v & w
-        self.v_resolution = 2                #   [cm/s]
-        self.w_resolution = math.pi/180.0   #   [rad/s]
-        self.orientation_resolution = math.pi/180.0
+        self.v_resolution = 10                #   [cm/s]
+        self.w_resolution = 2*math.pi/180.0   #   [rad/s]
+        self.orientation_resolution = 1*math.pi/180.0
         # sample time & predict time
         self.sample_time = 0.1                  #   [s]
         self.prediect_time = 0.5                #   [s]
 
         # cost index of goal & speed
-        self.heading_cost = 4
-        self.velocity_cost = 1
-        self.dis_cost = 2
+        self.heading_cost = 8
+        self.velocity_cost = 0.2
+        self.dis_cost = 100
 
         # robot radius
-        self.robot_radius = 20.0                 #   [cm]
+        self.robot_radius = 15.0                 #   [cm]
 
     def motion(self, x, u):
 
@@ -123,10 +123,13 @@ class DWA(object):
 
         dx = self.goal[0] - trajectory[-1, 0]
         dy = self.goal[1] - trajectory[-1, 1]
-        dis = math.sqrt(dx**2 + dy**2)
+        theta = math.atan2(dy, dx)
+        # print("theta = ", theta/math.pi*180)
 
-        cost = self.heading_cost * dis
+        # dis = math.sqrt(dx**2 + dy**2)
 
+        # cost = self.heading_cost * dis
+        cost = self.heading_cost * (math.pi - theta)
         return cost
 
     def calc_obstacle_cost(self, trajectory):
@@ -146,8 +149,10 @@ class DWA(object):
                 dy = trajectory[i, 1] - ob_y
 
                 temp_dis = math.sqrt(dx**2 + dy**2)
-                if temp_dis <= self.robot_radius:
+                if temp_dis <= 2*self.robot_radius:
                     return float("Inf")
+                #if trajectory[i, 0]>250 or trajectory[i, 0] < -250 or trajectory[i, 1]>180 or trajectory[i, 1]<-180:
+                #    return float("Inf")
                 if min_dis >= temp_dis:
                     min_dis = temp_dis
 
@@ -173,39 +178,46 @@ class DWA(object):
                 for orientation in np.arange(vr[4], vr[5], self.orientation_resolution):
                     temp_trajectory = self.get_trajectory(x_init, v, w, orientation)
 
+                    obstacle_cost = self.dis_cost*self.calc_obstacle_cost(temp_trajectory)
                     goal_cost = self.calc_goal_cost(temp_trajectory)
                     vel_cost = self.velocity_cost*(self.max_v-temp_trajectory[-1, 3])
-                    obstacle_cost = self.calc_obstacle_cost(temp_trajectory)
+                    print("obstacle = ",obstacle_cost)
+                    print("goal_cost = ", goal_cost)
+                    print("vel = ", vel_cost)
 
                     temp_cost = goal_cost + vel_cost + obstacle_cost
+                    # temp_cost = goal_cost
 
                     if final_cost >= temp_cost:
                         final_cost = temp_cost
                         final_u = [v, w, orientation]
                         best_trajectory = temp_trajectory
+
+        print("final_cost = " ,final_cost)
         return final_u, best_trajectory
 
 
-def dynamic_windwo_approach(x, u, goal, ob, path, id, serial):
+def dynamic_windwo_approach(x, u, goal, ob, path, id, serial, isYellow):
     dwa = DWA(goal, ob)
     trajectory = np.array(x)
     get_read = read.socket_read()
-    for i in range(1000):
+    while True:
         u, best_trajectory = dwa.control(x, u)
+        draw.draw_trajectory(best_trajectory, x, goal, ob, is_dynamic=True, path=path)
         # print(best_trajectory)
         # x = dwa.motion(x, u)
         cmd = cmd_generate.command_raw(robot_id=id, v=u[0], w=u[1], orientation=u[2])
         # robot_cmd = send.ser_command(com = 'COM3', baud = 115200)
         serial.send_cmd(cmd)
-
         print(u)
-        x = get_read.get_time_info()
+        x = get_read.get_position(id, isYellow)
         x.append(u[0])
         x.append(u[1])
         x.append(u[2])
+        # print("x = ", x)
         trajectory = np.vstack((trajectory, x))
-        draw.draw_trajectory(best_trajectory, x, goal, ob, is_dynamic=True, path=path)
-        if math.sqrt((x[0]-goal[0])**2 + (x[1]-goal[1])**2) <= dwa.robot_radius:
+
+        if math.sqrt((x[0]-goal[0])**2 + (x[1]-goal[1])**2) <= 50:
             print("goal")
             break
     return x

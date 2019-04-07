@@ -33,10 +33,11 @@ class ERRT_Plan(object):
         """
         self.start = ERRT_Node(start[0], start[1])
         self.goal = ERRT_Node(goal[0], goal[1])
+        self.ore = start[2]
         self.map_scope = map_scope
         self.q = 0.3
         self.p = 0.4
-        self.step_distance = 1
+        self.step_distance = 5
         self.obstacle_list = obstacle
         self.node_list = [self.start]
         if pre_path is not None:
@@ -151,10 +152,10 @@ class ERRT_Plan(object):
         path.append([self.start.x, self.start.y])
         path = path[::-1]
         print([self.goal.x, self.start.y])
-        draw.draw_path(path, [self.start.x, self.start.y], [self.goal.x, self.goal.y], ob=self.obstacle_list)
+        draw.draw_path(path, [self.start.x, self.start.y, self.ore], [self.goal.x, self.goal.y], ob=self.obstacle_list)
         # print(path)
         path = self.smooth(path)
-        draw.draw_path(path, [self.start.x, self.start.y], [self.goal.x, self.goal.y], ob=self.obstacle_list)
+        draw.draw_path(path, [self.start.x, self.start.y, self.ore], [self.goal.x, self.goal.y], ob=self.obstacle_list)
         # print(result_path)
 
         return path

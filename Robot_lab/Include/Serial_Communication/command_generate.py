@@ -42,7 +42,7 @@ def command_raw(robot_id, v, w, orientation):
     return cmd
 
 def main():
-    cmd = command_raw(1,1,0,1)
+    cmd = command_raw(1,1,0,30*math.pi/180)
     print(cmd)
 
 if __name__=="__main__":
