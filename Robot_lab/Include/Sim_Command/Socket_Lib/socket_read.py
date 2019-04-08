@@ -68,7 +68,7 @@ def get_position(id, isyellow):
     else:
         for blue in frame.robots_blue:
             if blue.robot_id == id:
-                positon = [blue.x / 10, blue.y / 10, blue.orientation]
+                position = [blue.x / 10, blue.y / 10, blue.orientation]
 
     return position
 
